@@ -1,2 +1,3 @@
-# lunarscents-movies
-To practice React Native by building a lunarscents Movies App
+# Lunarscents's Movies
+
+IOS / Android Moview Discovery App built with React Native.
