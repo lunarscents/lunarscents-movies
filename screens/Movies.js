@@ -1,5 +1,12 @@
 import React from "react";
 
-import { TEXT } from "react-native";
+import { TEXT, TouchableOpacity } from "react-native";
 
-export default () => <TEXT>MOVIES</TEXT>;
+export default ({ navigation }) => (
+  <>
+    <TEXT>MOVIES</TEXT>
+    <TouchableOpacity onPress={() => navigation.navigate("Detail")}>
+      <Text>Go to detail</Text>
+    </TouchableOpacity>
+  </>
+);

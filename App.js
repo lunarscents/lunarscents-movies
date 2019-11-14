@@ -1,7 +1,8 @@
 import React from "react";
 import { AppLoading, Font, Asset } from "expo";
+import { StatusBar } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import TabNavigation from "./navigation/TabNavigation";
+import MainNavigation from "./navigation/MainNavigation";
 
 export default function App() {
   state = {
@@ -21,9 +22,10 @@ export default function App() {
   };
 
   return loaded ? (
-    <View style={styles.container}>
-      <TabNavigation />
-    </View>
+    <>
+      <StatusBar barStyle="light-content" />
+      <MainNavigation />
+    </>
   ) : (
     <AppLoading
       startAsync={this.loadAssets}
