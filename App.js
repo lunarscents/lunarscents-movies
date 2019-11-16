@@ -1,10 +1,10 @@
 import React from "react";
-import { AppLoading, Font, Asset } from "expo";
+import { AppLoading, Font } from "expo";
 import { StatusBar } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import MainNavigation from "./navigation/MainNavigation";
 
-export default function App() {
+export default class App extends React.Component() {
   state = {
     loaded: false
   };
@@ -17,20 +17,20 @@ export default function App() {
     await Font.loadAsync({
       ...Ionicons.font
     });
-
-    await Asset.loadAsync([require("images/icon.png")]);
   };
 
-  return loaded ? (
-    <>
-      <StatusBar barStyle="light-content" />
-      <MainNavigation />
-    </>
-  ) : (
-    <AppLoading
-      startAsync={this.loadAssets}
-      onFinish={this.handleLoaded}
-      onError={this.handleLoaded}
-    />
-  );
+  render() {
+    return loaded ? (
+      <>
+        <StatusBar barStyle="light-content" />
+        <MainNavigation />
+      </>
+    ) : (
+      <AppLoading
+        startAsync={this.loadAssets}
+        onFinish={this.handleLoaded}
+        onError={this.handleError}
+      />
+    );
+  }
 }
