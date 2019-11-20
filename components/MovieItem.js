@@ -47,8 +47,8 @@ const MovieItem = ({
         <MovieRating votes={voteArg} />
         {overview ? (
           <Overview>
-            {overview.length > 117
-              ? `${overview.substring(0, 120)}...`
+            {overview.length > 150
+              ? `${overview.substring(0, 147)}...`
               : overview}
           </Overview>
         ) : null}
