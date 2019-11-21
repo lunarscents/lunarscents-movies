@@ -72,12 +72,12 @@ const MovieSlide = ({
   <Container>
     <BgImage source={{ uri: makePhotoUrl(backgroundPhoto) }} />
     <Content>
-      <MoviePoster path={postPhoto} />
+      <MoviePoster path={posterPhoto} />
       <Column>
         <Title>{title}</Title>
-        {voteAvg ? (
+        {voteArg ? (
           <VoteContainer>
-            <MovieRating votes={voteAvg} inSlide={true} />
+            <MovieRating votes={voteArg} inSlide={true} />
           </VoteContainer>
         ) : null}
         {overview ? (
@@ -91,7 +91,15 @@ const MovieSlide = ({
           onPress={() =>
             navigation.navigate({
               routeName: "Detail",
-              params: { isMovie: true, id }
+              params: {
+                isMovie: true,
+                id,
+                posterPhoto,
+                backgroundPhoto,
+                title,
+                voteArg,
+                overview
+              }
             })
           }
         >

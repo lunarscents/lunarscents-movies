@@ -48,30 +48,30 @@ const MovieItem = ({
       navigation.navigate({ routeName: "Detail", params: { isMovie, id } })
     }
   >
-    horizontal ? (
-    <HContainer>
-      <MoviePoster path={posterPhoto} />
-      <Column>
-        <Title>{title}</Title>
-        <MovieRating votes={voteArg} />
-        {overview ? (
-          <Overview>
-            {overview.length > 150
-              ? `${overview.substring(0, 147)}...`
-              : overview}
-          </Overview>
-        ) : null}
-      </Column>
-    </HContainer>
+    {horizontal ? (
+      <HContainer>
+        <MoviePoster path={posterPhoto} />
+        <Column>
+          <Title>{title}</Title>
+          <MovieRating votes={voteArg} />
+          {overview ? (
+            <Overview>
+              {overview.length > 150
+                ? `${overview.substring(0, 147)}...`
+                : overview}
+            </Overview>
+          ) : null}
+        </Column>
+      </HContainer>
     ) : (
-    <Container>
-      <MoviePoster path={posterPhoto} />
-      <Title>
-        {title.length > 15 ? `${title.substring(0, 12)}...` : title}
-      </Title>
-      <MovieRating votes={voteArg} />
-    </Container>
-    )
+      <Container>
+        <MoviePoster path={posterPhoto} />
+        <Title>
+          {title.length > 15 ? `${title.substring(0, 12)}...` : title}
+        </Title>
+        <MovieRating votes={voteArg} />
+      </Container>
+    )}
   </TouchableWithoutFeedback>
 );
 
