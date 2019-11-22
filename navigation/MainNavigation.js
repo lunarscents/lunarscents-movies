@@ -1,4 +1,5 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import TabNavigation from "./TabNavigation";
 import DetailScreen from "../screens/Detail";
 import { headerStyles } from "./config";
@@ -12,13 +13,14 @@ const MainNavigation = createStackNavigator(
     Detail: {
       screen: DetailScreen,
       navigationOptions: {
+        gesturesEnabled: true,
         ...headerStyles
       }
     }
   },
   {
     headerMode: "screen",
-    headerBackTitleVisible: flase
+    headerBackTitleVisible: false
   }
 );
 

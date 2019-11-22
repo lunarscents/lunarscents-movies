@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withNavigation } from "react-navigation";
 import styled from "styled-components";
-import MovieSlider from "./MovieSlider";
 import makePhotoUrl from "../utils/makePhotoUrl";
 import Layout from "../constants/Layout";
 import { TINT_COLOR, GREY_COLOR } from "../constants/Colors";
+import MoviePoster from "./MoviePoster";
 import MovieRating from "./MovieRating";
 
 const Container = styled.View`
+  flex: 1;
   position: relative;
 `;
 
@@ -36,7 +37,6 @@ const Title = styled.Text`
   color: ${TINT_COLOR};
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 10px;
 `;
 
 const Overview = styled.Text`
@@ -51,8 +51,8 @@ const VoteContainer = styled.View`
 
 const BtnContainer = styled.TouchableOpacity`
   background-color: #e74c3c;
-  padding: 5px;
-  border-radius: 2.5px;
+  padding: 8px;
+  border-radius: 5px;
 `;
 
 const BtnText = styled.Text`
@@ -65,7 +65,7 @@ const MovieSlide = ({
   posterPhoto,
   backgroundPhoto,
   title,
-  voteArg,
+  voteAvg,
   overview,
   navigation
 }) => (
@@ -75,9 +75,9 @@ const MovieSlide = ({
       <MoviePoster path={posterPhoto} />
       <Column>
         <Title>{title}</Title>
-        {voteArg ? (
+        {voteAvg ? (
           <VoteContainer>
-            <MovieRating votes={voteArg} inSlide={true} />
+            <MovieRating votes={voteAvg} inSlide={true} />
           </VoteContainer>
         ) : null}
         {overview ? (
@@ -97,13 +97,13 @@ const MovieSlide = ({
                 posterPhoto,
                 backgroundPhoto,
                 title,
-                voteArg,
+                voteAvg,
                 overview
               }
             })
           }
         >
-          <BtnText>More details</BtnText>
+          <BtnText>View details</BtnText>
         </BtnContainer>
       </Column>
     </Content>
@@ -115,7 +115,7 @@ MovieSlide.propTypes = {
   posterPhoto: PropTypes.string.isRequired,
   backgroundPhoto: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  voteArg: PropTypes.number.isRequired,
+  voteAvg: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired
 };
 

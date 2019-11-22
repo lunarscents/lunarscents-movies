@@ -2,7 +2,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { BG_COLOR, TINT_COLOR } from "../constants/Colors";
 
 export const headerStyles = {
-  headerStyles: {
+  headerStyle: {
     backgroundColor: BG_COLOR,
     borderBottomWidth: 0
   },
@@ -14,5 +14,8 @@ export const headerStyles = {
 
 export const createStack = (screen, title) =>
   createStackNavigator({
-    Screen: { screen, navigationOptions: { title, ...headerStyles } }
+    Screen: {
+      screen,
+      navigationOptions: { title, ...headerStyles }
+    }
   });

@@ -1,6 +1,6 @@
 import React from "react";
 import DetailPresenter from "./DetailPresenter";
-import { movies } from "../../api";
+import { movies, tv } from "../../api";
 
 export default class extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -11,6 +11,7 @@ export default class extends React.Component {
 
   constructor(props) {
     super(props);
+
     const {
       navigation: {
         state: {
@@ -58,13 +59,14 @@ export default class extends React.Component {
             genres,
             overview,
             status,
-            release_date: date,
+            first_air_date: date,
             backdrop_path: backgroundPhoto
           }
         } = await tv.getShow(id));
       }
     } catch (error) {
       console.log(error);
+      error = "Can't find Detail";
     } finally {
       this.setState({
         loading: false,

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { TouchableWithoutFeedback } from "react-native";
 import { withNavigation } from "react-navigation";
 import styled from "styled-components";
+import MoviePoster from "./MoviePoster";
 import MovieRating from "./MovieRating";
 import { GREY_COLOR } from "../constants/Colors";
 
@@ -13,11 +14,11 @@ const Container = styled.View`
 
 const Title = styled.Text`
   color: white;
-  font-size: ${props => (props.big ? "12px" : "14px")};
+  font-size: ${props => (!props.big ? "12px" : "14px")};
   margin-vertical: 5px;
 `;
 
-const HContainer = styled.div`
+const HContainer = styled.View`
   margin-bottom: 20px;
   flex-direction: row;
 `;
@@ -37,7 +38,7 @@ const MovieItem = ({
   id,
   posterPhoto,
   title,
-  voteArg,
+  voteAvg,
   horizontal = false,
   overview,
   isMovie = true,
@@ -63,8 +64,8 @@ const MovieItem = ({
       <HContainer>
         <MoviePoster path={posterPhoto} />
         <Column>
-          <Title>{title}</Title>
-          <MovieRating votes={voteArg} />
+          <Title big={true}>{title}</Title>
+          <MovieRating votes={voteAvg} />
           {overview ? (
             <Overview>
               {overview.length > 150
@@ -80,7 +81,7 @@ const MovieItem = ({
         <Title>
           {title.length > 15 ? `${title.substring(0, 12)}...` : title}
         </Title>
-        <MovieRating votes={voteArg} />
+        <MovieRating votes={voteAvg} />
       </Container>
     )}
   </TouchableWithoutFeedback>
@@ -90,7 +91,7 @@ MovieItem.propTypes = {
   id: PropTypes.number.isRequired,
   posterPhoto: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  voteArg: PropTypes.number.isRequired,
+  voteAvg: PropTypes.number.isRequired,
   overview: PropTypes.string,
   isMovie: PropTypes.bool
 };

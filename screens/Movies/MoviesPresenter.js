@@ -11,13 +11,6 @@ const Container = styled.ScrollView`
   background-color: ${BG_COLOR};
 `;
 
-const Title = styled.Text`
-  color: white;
-  font-weight: 600;
-  padding-left: 20px;
-  margin-left: 10px;
-`;
-
 const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
   loading ? (
     <Loader />
@@ -25,7 +18,7 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
     <Container>
       {nowPlaying ? <MovieSlider movies={nowPlaying} /> : null}
       {upcoming ? (
-        <Section movies={upcoming} title="Upcoming Movies">
+        <Section title="Upcoming Movies">
           {upcoming
             .filter(movie => movie.poster_path !== null)
             .map(movie => (
@@ -34,7 +27,6 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
                 id={movie.id}
                 posterPhoto={movie.poster_path}
                 title={movie.title}
-                overview={movie.overview}
                 voteAvg={movie.vote_average}
               />
             ))}
@@ -51,16 +43,16 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
                 id={movie.id}
                 posterPhoto={movie.poster_path}
                 title={movie.title}
+                overview={movie.overview}
                 voteAvg={movie.vote_average}
               />
             ))}
         </Section>
       ) : null}
-      <Title></Title>
     </Container>
   );
 
-MoviesPresenter.PropTypes = {
+MoviesPresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
   upcoming: PropTypes.array,
   popular: PropTypes.array,

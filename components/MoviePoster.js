@@ -13,7 +13,7 @@ const MoviePoster = ({ path }) => (
   <Image source={{ url: makePhotoUrl(path) }} />
 );
 
-MoviePoster.PropTypes = {
+MoviePoster.propTypes = {
   path: PropTypes.string
 };
 

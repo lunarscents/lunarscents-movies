@@ -67,7 +67,7 @@ const TVPresenter = ({ loading, popular, airingThisWeek, airingToday }) =>
     </Container>
   );
 
-TVPresenter.PropTypes = {
+TVPresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
   popular: PropTypes.array,
   topRated: PropTypes.array,

@@ -7,7 +7,8 @@ export default class extends React.Component {
     loading: true,
     upcoming: null,
     popular: null,
-    nowPlaying: null
+    nowPlaying: null,
+    error: null
   };
 
   async componentDidMount() {
@@ -23,7 +24,7 @@ export default class extends React.Component {
       ({
         data: { results: nowPlaying }
       } = await movies.getNowPlaying());
-    } catch {
+    } catch (error) {
       error = "Can't get Movies.";
     } finally {
       this.setState({

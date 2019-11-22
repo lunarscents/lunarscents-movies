@@ -8,7 +8,6 @@ import MovieSlide from "./MovieSlide";
 const SWIPER_HEIGHT = Layout.height / 3;
 
 const View = styled.View`
-  background-color: red;
   height: ${SWIPER_HEIGHT};
 `;
 
@@ -31,7 +30,8 @@ const MovieSlider = ({ movies }) =>
               voteAvg={movie.vote_average}
               title={movie.title}
               id={movie.id}
-              backgroundPhoto={movie.backgroundPhoto}
+              backgroundPhoto={movie.backdrop_path}
+              posterPhoto={movie.poster_path}
             />
           </View>
         ))}

@@ -24,15 +24,15 @@ export default class extends React.Component {
         data: { results: airingToday }
       } = await tv.getAiringToday());
       throw Error("I'm hungry");
-    } catch {
+    } catch (error) {
       error = "Can't get TV.";
     } finally {
       this.setState({
         loading: false,
         error,
-        upcoming,
         popular,
-        nowPlaying
+        airingThisWeek,
+        airingToday
       });
     }
   }

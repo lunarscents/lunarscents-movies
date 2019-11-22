@@ -65,6 +65,7 @@ const SearchPresenter = ({
                     id={movie.id}
                     posterPhoto={movie.poster_path}
                     title={movie.title}
+                    overview={movie.overview}
                     voteAvg={movie.vote_average}
                   />
                 ))}

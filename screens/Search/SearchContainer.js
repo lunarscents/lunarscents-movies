@@ -20,8 +20,8 @@ export default class extends React.Component {
   onSubmitEditing = async () => {
     const { searchTerm } = this.state;
 
-    if (!searchTerm) {
-      let loading, movieResults, tvResults;
+    if (!!searchTerm) {
+      let movieResults, tvResults, error;
 
       this.setState({
         loading: true
@@ -34,17 +34,18 @@ export default class extends React.Component {
         ({
           data: { results: tvResults }
         } = await tv.searchTv(searchTerm));
-      } catch {
+      } catch (error) {
         error = "Cant't Search";
       } finally {
         this.setState({
           loading: false,
           movieResults,
-          tvResults
+          tvResults,
+          error
         });
       }
-      return;
     }
+    return;
   };
 
   render() {

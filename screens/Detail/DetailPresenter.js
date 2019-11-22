@@ -1,6 +1,7 @@
 import React from "react";
+import { Platform } from "react-native";
 import PropTypes from "prop-types";
-import { LinearGradient } from "expo";
+import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components";
 import MoviePoster from "../../components/MoviePoster";
 import { BG_COLOR, TINT_COLOR } from "../../constants/Colors";
@@ -8,11 +9,9 @@ import Layout from "../../constants/Layout";
 import makePhotoUrl from "../../utils/makePhotoUrl";
 import MovieRating from "../../components/MovieRating";
 import Loader from "../../components/Loader";
-import { Platform } from "@unimodules/core";
 
 const Container = styled.ScrollView`
   background-color: ${BG_COLOR};
-  flex: 1;
 `;
 
 const Header = styled.View`
@@ -27,11 +26,11 @@ const BgImage = styled.Image`
 `;
 
 const Content = styled.View`
-  flex: 1;
   flex-direction: row;
+  width: 80%;
   align-items: flex-end;
-  padding-horizontal: 30px;
-  height: ${Layout.height / 3};
+  padding-horizontal: 20px;
+  height: ${Layout.height / 3.5};
 `;
 
 const Column = styled.View`
@@ -43,12 +42,10 @@ const Title = styled.Text`
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 10px;
-  width: 80%;
 `;
 const MainContent = styled.View`
   padding-horizontal: 20px;
   margin-top: 25px;
-  width: 80%;
 `;
 
 const ContentTitle = styled.Text`
@@ -65,14 +62,14 @@ const ContentValue = styled.Text`
 `;
 
 const DataContainer = styled.View`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
-const Genres = styled.View`
+const Genres = styled.Text`
   color: ${TINT_COLOR};
   font-size: 12px;
   margin-top: 10px;
-  width: 80%;
+  width: 95%;
 `;
 
 const DetailPresenter = ({
@@ -94,21 +91,22 @@ const DetailPresenter = ({
         colors={["transparent", "black"]}
         start={Platform.select({ ios: [0, 0] })}
         end={Platform.select({ ios: [0, 0.5], android: [0, 0.9] })}
-      />
-      <Content>
-        <MoviePoster path={posterPhoto} />
-        <Column>
-          <Title>{title}</Title>
-          <MovieRating inSlide={true} votes={voteAvg} />
-          {genres ? (
-            <Genres>
-              {genres.map((genre, index) =>
-                index === genres.length - 1 ? genre.name : `${genre.name} /`
-              )}
-            </Genres>
-          ) : null}
-        </Column>
-      </Content>
+      >
+        <Content>
+          <MoviePoster path={posterPhoto} />
+          <Column>
+            <Title>{title}</Title>
+            <MovieRating inSlide={true} votes={voteAvg} />
+            {genres ? (
+              <Genres>
+                {genres.map((genre, index) =>
+                  index === genres.length - 1 ? genre.name : `${genre.name} /`
+                )}
+              </Genres>
+            ) : null}
+          </Column>
+        </Content>
+      </LinearGradient>
     </Header>
     <MainContent>
       {overview ? (
@@ -122,7 +120,6 @@ const DetailPresenter = ({
           <ContentTitle>Status</ContentTitle>
           <ContentValue>{status}</ContentValue>
         </DataContainer>
-      ) : null}
       ) : null}
       {date ? (
         <DataContainer>
