@@ -66,32 +66,34 @@ export default class extends React.Component {
     } catch (error) {
       console.log(error);
     } finally {
-      this.setState(prev => {
-        return {
-          ...prev,
-          loading: false,
-          genres,
-          overview,
-          status,
-          date,
-          backgroundPhoto
-        };
+      this.setState({
+        loading: false,
+        genres,
+        overview,
+        status,
+        date,
+        backgroundPhoto
       });
     }
   }
 
   render() {
     const {
+      isMovie,
       id,
       posterPhoto,
       backgroundPhoto,
       title,
       voteAvg,
       overview,
-      loading
+      loading,
+      date,
+      status,
+      genres
     } = this.state;
     return (
       <DetailPresenter
+        isMovie={isMovie}
         id={id}
         posterPhoto={posterPhoto}
         backgroundPhoto={backgroundPhoto}
@@ -99,6 +101,9 @@ export default class extends React.Component {
         voteAvg={voteAvg}
         overview={overview}
         loading={loading}
+        date={date}
+        status={status}
+        genres={genres}
       />
     );
   }
