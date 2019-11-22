@@ -44,19 +44,23 @@ export default class extends React.Component {
     try {
       if (isMovie) {
         ({
-          genres,
-          overview,
-          status,
-          release_date: date,
-          backdrop_path: backgroundPhoto
+          data: {
+            genres,
+            overview,
+            status,
+            release_date: date,
+            backdrop_path: backgroundPhoto
+          }
         } = await movies.getMovie(id));
       } else {
         ({
-          genres,
-          overview,
-          status,
-          release_date: date,
-          backdrop_path: backgroundPhoto
+          data: {
+            genres,
+            overview,
+            status,
+            release_date: date,
+            backdrop_path: backgroundPhoto
+          }
         } = await tv.getShow(id));
       }
     } catch (error) {

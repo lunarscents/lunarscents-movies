@@ -48,6 +48,7 @@ const Title = styled.Text`
 const MainContent = styled.View`
   padding-horizontal: 20px;
   margin-top: 25px;
+  width: 80%;
 `;
 
 const ContentTitle = styled.Text`
