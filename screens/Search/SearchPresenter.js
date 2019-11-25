@@ -54,10 +54,10 @@ const SearchPresenter = ({
         <Loader />
       ) : (
         <>
-          {(movieResults || []).length > 0 ? (
+          {(movieResults || []).length > 0 && (
             <Section title="Movie Results">
               {movieResults
-                .filter(movie => movie.poster_path !== null)
+                .filter(movie => !!movie.poster_path)
                 .map(movie => (
                   <MovieItem
                     isMovie={false}
@@ -70,11 +70,11 @@ const SearchPresenter = ({
                   />
                 ))}
             </Section>
-          ) : null}
-          {(tvResults || []).length > 0 ? (
+          )}
+          {(tvResults || []).length > 0 && (
             <Section title="Movie Results">
               {tvResults
-                .filter(tv => tv.poster_path !== null)
+                .filter(tv => !!tv.poster_path)
                 .map(tv => (
                   <MovieItem
                     isMovie={false}
@@ -86,7 +86,7 @@ const SearchPresenter = ({
                   />
                 ))}
             </Section>
-          ) : null}
+          )}
         </>
       )}
     </SearchResults>

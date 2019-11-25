@@ -16,8 +16,8 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
     <Loader />
   ) : (
     <Container>
-      {nowPlaying ? <MovieSlider movies={nowPlaying} /> : null}
-      {upcoming ? (
+      {!!nowPlaying && <MovieSlider movies={nowPlaying} />}
+      {!!upcoming && (
         <Section title="Upcoming Movies">
           {upcoming
             .filter(movie => movie.poster_path !== null)
@@ -31,11 +31,11 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
               />
             ))}
         </Section>
-      ) : null}
-      {popular ? (
+      )}
+      {!!popular && (
         <Section horizontal={false} title="Popular Movies">
           {popular
-            .filter(movie => movie.poster_path !== null)
+            .filter(movie => !!movie.poster_path)
             .map(movie => (
               <MovieItem
                 horizontal={true}
@@ -48,7 +48,7 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
               />
             ))}
         </Section>
-      ) : null}
+      )}
     </Container>
   );
 

@@ -66,13 +66,13 @@ const MovieItem = ({
         <Column>
           <Title big={true}>{title}</Title>
           <MovieRating votes={voteAvg} />
-          {overview ? (
+          {!!overview && (
             <Overview>
               {overview.length > 150
                 ? `${overview.substring(0, 147)}...`
                 : overview}
             </Overview>
-          ) : null}
+          )}
         </Column>
       </HContainer>
     ) : (

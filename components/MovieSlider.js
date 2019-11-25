@@ -14,7 +14,7 @@ const View = styled.View`
 const Text = styled.Text``;
 
 const MovieSlider = ({ movies }) =>
-  movies ? (
+  (movies || []).length > 0 && (
     <Swiper
       showPagination={false}
       autoplay={true}
@@ -22,7 +22,7 @@ const MovieSlider = ({ movies }) =>
       autoTimeout={3}
     >
       {movies
-        .filter(movie => movie.backdrop_path !== null)
+        .filter(movie => !!movie.backdrop_path)
         .map(movie => (
           <View key={movie.id}>
             <MovieSlide
@@ -36,7 +36,7 @@ const MovieSlider = ({ movies }) =>
           </View>
         ))}
     </Swiper>
-  ) : null;
+  );
 
 MovieSlider.propTypes = {
   movies: PropTypes.array

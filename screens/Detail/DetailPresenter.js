@@ -97,39 +97,39 @@ const DetailPresenter = ({
           <Column>
             <Title>{title}</Title>
             <MovieRating inSlide={true} votes={voteAvg} />
-            {genres ? (
+            {!!genres && (
               <Genres>
                 {genres.map((genre, index) =>
                   index === genres.length - 1 ? genre.name : `${genre.name} /`
                 )}
               </Genres>
-            ) : null}
+            )}
           </Column>
         </Content>
       </LinearGradient>
     </Header>
     <MainContent>
-      {overview ? (
+      {!!overview && (
         <DataContainer>
           <ContentTitle>Overview</ContentTitle>
           <ContentValue>{overview}</ContentValue>
         </DataContainer>
-      ) : null}
-      {status ? (
+      )}
+      {!!status && (
         <DataContainer>
           <ContentTitle>Status</ContentTitle>
           <ContentValue>{status}</ContentValue>
         </DataContainer>
-      ) : null}
-      {date ? (
+      )}
+      {!!date && (
         <DataContainer>
           <ContentTitle>
             {isMovie ? "Release Data" : "First Episode"}
           </ContentTitle>
           <ContentValue>{date}</ContentValue>
         </DataContainer>
-      ) : null}
-      {loading ? <Loader /> : null}
+      )}
+      {!!loading && <Loader />}
     </MainContent>
   </Container>
 );

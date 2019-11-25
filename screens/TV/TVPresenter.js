@@ -15,10 +15,10 @@ const TVPresenter = ({ loading, popular, airingThisWeek, airingToday }) =>
     <Loader />
   ) : (
     <Container>
-      {airingToday ? (
+      {!!airingToday && (
         <Section title="Airing Today">
           {airingToday
-            .filter(tv => tv.poster_path !== null)
+            .filter(tv => !!tv.poster_path)
             .map(tv => (
               <MovieItem
                 key={tv.id}
@@ -29,12 +29,12 @@ const TVPresenter = ({ loading, popular, airingThisWeek, airingToday }) =>
               />
             ))}
         </Section>
-      ) : null}
+      )}
 
-      {airingThisWeek ? (
+      {!!airingThisWeek && (
         <Section title="Airing this Week">
           {airingThisWeek
-            .filter(tv => tv.poster_path !== null)
+            .filter(tv => !!tv.poster_path)
             .map(tv => (
               <MovieItem
                 isMovie={false}
@@ -46,12 +46,12 @@ const TVPresenter = ({ loading, popular, airingThisWeek, airingToday }) =>
               />
             ))}
         </Section>
-      ) : null}
+      )}
 
-      {popular ? (
+      {!!popular && (
         <Section title="Popular">
           {popular
-            .filter(tv => tv.poster_path !== null)
+            .filter(tv => !!tv.poster_path)
             .map(tv => (
               <MovieItem
                 isMovie={false}
@@ -63,7 +63,7 @@ const TVPresenter = ({ loading, popular, airingThisWeek, airingToday }) =>
               />
             ))}
         </Section>
-      ) : null}
+      )}
     </Container>
   );
 

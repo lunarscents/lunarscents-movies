@@ -75,18 +75,18 @@ const MovieSlide = ({
       <MoviePoster path={posterPhoto} />
       <Column>
         <Title>{title}</Title>
-        {voteAvg ? (
+        {!!voteAvg && (
           <VoteContainer>
             <MovieRating votes={voteAvg} inSlide={true} />
           </VoteContainer>
-        ) : null}
-        {overview ? (
+        )}
+        {!!overview && (
           <Overview>
             {overview.length > 117
               ? `${overview.substring(0, 120)}...`
               : overview}
           </Overview>
-        ) : null}
+        )}
         <BtnContainer
           onPress={() =>
             navigation.navigate({
