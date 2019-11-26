@@ -1,6 +1,6 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
-import { TINR_COLOR, BG_COLOR } from "../constants/Colors";
+import { TINT_COLOR, BG_COLOR } from "../constants/Colors";
 import styled from "styled-components";
 
 const Container = styled.View`
@@ -11,6 +11,6 @@ const Container = styled.View`
 
 export default () => (
   <Container>
-    <ActivityIndicator color={TINR_COLOR} />
+    <ActivityIndicator color={TINT_COLOR} />
   </Container>
 );
